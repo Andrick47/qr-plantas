@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jardín Botánico — Demo QR</title>
+  <style>
+    body { font-family: system-ui, Arial, sans-serif; margin: 0; background: #f6f7fb; }
+    header { padding: 28px 18px; background: white; border-bottom: 1px solid #e9e9ef; }
+    h1 { margin: 0; font-size: 22px; }
+    p { margin: 10px 0 0; color: #444; line-height: 1.4; }
+    main { max-width: 980px; margin: 0 auto; padding: 18px; display: grid; gap: 16px; grid-template-columns: 1.2fr 0.8fr; }
+    .card { background: white; border: 1px solid #ececf3; border-radius: 14px; padding: 16px; box-shadow: 0 6px 18px rgba(0,0,0,0.04); }
+    .btn { display: inline-block; padding: 10px 14px; border-radius: 10px; background: #1f7a4f; color: white; text-decoration: none; font-weight: 600; }
+    .muted { color: #666; font-size: 14px; }
+    #qrcode { display: grid; place-items: center; padding: 10px; }
+    code { background: #f1f3f8; padding: 2px 6px; border-radius: 6px; }
+    @media (max-width: 820px){ main{ grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Jardín Botánico — Demo de Códigos QR</h1>
+    <p>Escanea el QR para abrir la ficha informativa de una planta exótica.</p>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2 style="margin-top:0;">Planta destacada</h2>
+      <p><strong>Nepenthes rajah</strong> — Planta carnívora tipo “jarra”.</p>
+      <p class="muted">Idea: esto simula cómo un visitante escanea un QR y consulta la información en su celular.</p>
+
+      <div style="margin-top:14px;">
+        <a class="btn" href="planta.html">Abrir ficha en esta computadora</a>
+      </div>
+
+      <hr style="border:none;border-top:1px solid #eee;margin:16px 0;">
+
+      <p class="muted">
+        Para que el QR funcione en tu celular, lo ideal es que la página esté en un enlace tipo
+        <code>https://...</code>.
+      </p>
+
+      <label class="muted" for="publicUrl">URL pública (opcional):</label>
+      <input id="publicUrl" type="text"
+        placeholder="Pega aquí tu link (GitHub Pages / Netlify) y se actualizará el QR"
+        style="width:100%;padding:10px;border-radius:10px;border:1px solid #ddd;margin-top:8px;" />
+      <p class="muted" style="margin-top:8px;">
+        Si lo dejas vacío, el QR apuntará a <code>planta.html</code> (se ve bonito en demo, pero el celular puede no abrirlo).
+      </p>
+    </section>
+
+    <aside class="card">
+      <h2 style="margin-top:0;">QR de la planta</h2>
+      <div id="qrcode"></div>
+      <p class="muted" id="qrText" style="text-align:center;margin-top:10px;"></p>
+    </aside>
+  </main>
+
+  <!-- Librería para generar QR (CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+  <script>
+    const qrBox = document.getElementById("qrcode");
+    const qrText = document.getElementById("qrText");
+    const publicUrlInput = document.getElementById("publicUrl");
+
+    function buildTargetUrl() {
+      const typed = publicUrlInput.value.trim();
+      if (typed) {
+        // Si el usuario pega una URL pública, usamos esa + /planta.html
+        return typed.replace(/\/$/, "") + "/planta.html";
+      }
+      // Si no hay URL pública, apuntamos a la página local (demo visual).
+      return "planta.html";
+    }
+
+    let qr = new QRCode(qrBox, {
+      text: buildTargetUrl(),
+      width: 220,
+      height: 220
+    });
+
+    function refreshQR() {
+      const url = buildTargetUrl();
+      qr.clear();
+      qr.makeCode(url);
+      qrText.textContent = "Destino del QR: " + url;
+    }
+
+    publicUrlInput.addEventListener("input", refreshQR);
+    refreshQR();
+  </script>
+</body>
+</html>
