@@ -1,0 +1,2 @@
+# qr-plantas
+beta version
