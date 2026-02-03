@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ficha — Victoria amazonica</title>
+  <style>
+    body { font-family: system-ui, Arial, sans-serif; margin: 0; background: #f6f7fb; }
+    header { padding: 22px 18px; background: white; border-bottom: 1px solid #e9e9ef; }
+    a { color: #1f7a4f; text-decoration: none; font-weight: 600; }
+    main { max-width: 980px; margin: 0 auto; padding: 18px; }
+    .grid { display: grid; gap: 16px; grid-template-columns: 1fr 1fr; }
+    .card { background: white; border: 1px solid #ececf3; border-radius: 14px; padding: 16px; box-shadow: 0 6px 18px rgba(0,0,0,0.04); }
+    h1 { margin: 0; font-size: 24px; }
+    h2 { margin: 0 0 10px; font-size: 18px; }
+    .muted { color: #666; font-size: 14px; line-height: 1.45; }
+    img { width: 100%; height: 320px; object-fit: cover; border-radius: 12px; border: 1px solid #eee; }
+    ul { margin: 10px 0 0; padding-left: 18px; }
+    li { margin: 6px 0; }
+    @media (max-width: 820px){ .grid{ grid-template-columns: 1fr; } img{ height: 260px; } }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="index.html">← Volver</a>
+    <div style="margin-top:10px;">
+      <h1>Victoria amazonica</h1>
+      <p class="muted">Planta acuática — ficha informativa para consulta rápida mediante código QR.</p>
+    </div>
+  </header>
+
+  <main>
+    <section class="grid">
+      <div class="card">
+        <h2>Imagen</h2>
+        <img src="victoria.jpg" alt="Victoria amazonica" />
+        <p class="muted" style="margin-top:10px;">
+          *En versión final, aquí podrías usar una foto tomada en el jardín botánico.*
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>Datos clave</h2>
+        <ul>
+          <li><strong>Nombre común:</strong> Nenúfar gigante del Amazonas</li>
+          <li><strong>Tipo:</strong> Planta acuática</li>
+          <li><strong>Hábitat:</strong> Ríos y lagunas de la cuenca del Amazonas</li>
+          <li><strong>Características:</strong> Hojas flotantes enormes</li>
+          <li><strong>Dato curioso:</strong> Sus hojas pueden soportar peso ligero si se distribuye</li>
+        </ul>
+
+        <hr style="border:none;border-top:1px solid #eee;margin:16px 0;">
+
+        <h2>Descripción breve</h2>
+        <p class="muted">
+          Victoria amazonica es conocida por sus hojas gigantes que flotan en el agua. Esta ficha
+          demuestra cómo los visitantes consultan información al instante usando un código QR.
+        </p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
